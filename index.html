@@ -1,253 +1,162 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BrowCookie's - Cookies e Brownies Artesanais</title>
 <style>
-  /* Reset e base */
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{font-family:Georgia,serif;color:#333;background:#FAF5F1;font-size:14px;line-height:1.5}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Georgia',serif;color:#333;line-height:1.5;font-size:14px;}
 
-  /* Header */
-  header{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.98);z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.08)}
-  nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem}
-  .logo img{height:54px;display:block}
-  .nav-links{display:flex;gap:12px;list-style:none}
-  .nav-links a{text-decoration:none;color:#6B4423;font-weight:600;font-size:14px}
+/* Fundo com a logo */
+body::before{
+  content:"";
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:url('https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/browcookies.jpg') center/cover no-repeat;
+  opacity:0.08;
+  z-index:-1;
+}
 
-  /* Hero (usa a LOGO como background) */
-  .hero{
-    height:72vh;
-    min-height:360px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-top:72px; /* espaço para header */
-    position:relative;
-    background-color:#EDE0D6; /* tom amadeirado claro */
-    /* logo central como elemento decorativo */
-    background-image:
-      linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
-      url("https://i.postimg.cc/C5YS29s5/browcookies-logo.png");
-    background-repeat:no-repeat;
-    background-position:center 35%;
-    background-size:280px 280px;
-    text-align:center;
-    padding:1rem;
-  }
-  /* opcional: se quiser que a logo ocupe menos em mobile */
-  @media (max-width:520px){
-    .hero{background-size:200px 200px;background-position:center 25%}
-  }
+header{
+  background:white;
+  color:#333;
+  padding:.4rem 0;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+nav{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 1rem;}
+.logo img{height:60px;}
+.nav-links{display:flex;gap:1rem;list-style:none;font-size:14px;}
+.nav-links a{text-decoration:none;color:#B8956A;}
+.nav-links a:hover{color:#6B4423;}
 
-  .hero-inner{position:relative;z-index:2;max-width:900px}
-  .hero h1{font-size:30px;color:#6B4423;margin-bottom:.4rem}
-  .hero p{font-size:15px;color:#6B4423;margin-bottom:1rem}
-  .btn{display:inline-block;padding:.55rem 1.2rem;border-radius:28px;background:#B8956A;color:#fff;text-decoration:none;font-size:14px}
+.hero{
+  height:80vh;
+  background:url('https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/WhatsApp%20Image%202025-11-13%20at%2006.51.48.jpeg') center/cover;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:1rem;margin-top:70px;
+}
+.hero h1{font-size:32px;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.4);}
+.hero p{font-size:16px;color:#fff;margin-top:.5rem;text-shadow:0 2px 6px rgba(0,0,0,.4);}
+.btn{display:inline-block;margin-top:1rem;padding:.6rem 1.4rem;border-radius:30px;background:#B8956A;color:white;text-decoration:none;font-size:14px;}
+section{padding:3rem 1rem;max-width:1100px;margin:0 auto;}
+h2{text-align:center;font-size:22px;margin-bottom:2rem;color:#B8956A;}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}
+.menu-item{background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08);transition:transform 0.2s;}
+.menu-item:hover{transform:scale(1.03);}
+.menu-item img{width:100%;height:200px;object-fit:cover;cursor:pointer;}
+.menu-item-content{padding:1rem;}
+.menu-item-content h3{color:#6B4423;font-size:18px;}
+.price{font-size:16px;color:#B8956A;font-weight:bold;}
 
-  /* Sections */
-  section{padding:2.4rem 1rem}
-  .container{max-width:1100px;margin:0 auto}
+.about-img img{width:100%;height:280px;object-fit:cover;border-radius:12px;}
+.contact-info{background:#FFF8F0;padding:1.5rem;border-radius:12px;border:1px solid #B8956A;text-align:center;}
+.whatsapp-btn{display:block;margin-top:1rem;background:#25D366;color:white;padding:.7rem;border-radius:30px;text-decoration:none;font-size:15px;}
+footer{text-align:center;padding:1.5rem;background:#6B4423;color:white;font-size:13px;margin-top:2rem;}
 
-  h2{text-align:center;color:#B8956A;margin-bottom:1.2rem;font-size:20px}
-
-  /* Cardápio */
-  .menu-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-  .menu-item{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.06);cursor:pointer;transition:transform .18s}
-  .menu-item:hover{transform:translateY(-6px)}
-  .menu-item img{width:100%;height:170px;object-fit:cover;display:block}
-  .menu-item-content{padding:12px}
-  .menu-item-content h3{color:#6B4423;margin-bottom:6px;font-size:16px}
-  .menu-item-content p{color:#666;font-size:13px;margin-bottom:8px}
-  .price{color:#B8956A;font-weight:700;font-size:15px}
-
-  /* About */
-  .about{display:grid;gap:1rem;grid-template-columns:1fr;align-items:center}
-  @media(min-width:880px){ .about{grid-template-columns:1fr 420px} }
-  .about-img img{width:100%;height:260px;object-fit:cover;border-radius:10px}
-
-  /* Contact */
-  .contact-info{background:#FFF8F0;padding:14px;border-radius:10px;border:1px solid #E0C7A9;text-align:center}
-
-  /* Footer */
-  footer{padding:18px 1rem;text-align:center;background:#6B4423;color:#fff;margin-top:18px;font-size:13px}
-
-  /* Modal (zoom imagem) */
-  #imageModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:2000;align-items:center;justify-content:center}
-  #imageModal img{max-width:92%;max-height:92%;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.6)}
-  #imageModal .close{position:absolute;top:18px;right:22px;color:#fff;font-size:28px;cursor:pointer}
-
-  /* Botão flutuante WhatsApp */
-  .whatsapp-fab{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    z-index:3000;
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    background:linear-gradient(180deg,#25D366,#1DA851);
-    color:#fff;
-    padding:12px 14px;
-    border-radius:999px;
-    box-shadow:0 8px 22px rgba(37,211,102,0.28);
-    text-decoration:none;
-    font-weight:700;
-    font-size:14px;
-  }
-  .whatsapp-fab img{height:20px;width:20px;display:block}
-
-  /* ajustes finos mobile */
-  @media(max-width:480px){
-    .hero h1{font-size:22px}
-    .hero p{font-size:13px}
-    .menu-item img{height:150px}
-    .whatsapp-fab{padding:10px 12px;font-size:13px;right:12px;bottom:12px}
-  }
-
+/* Botão flutuante WhatsApp */
+#whatsapp-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:14px;
+  border-radius:50%;
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
+  font-size:24px;
+  text-decoration:none;
+  z-index:1000;
+}
+#whatsapp-float:hover{background:#1ebe5d;}
 </style>
 </head>
 <body>
 
 <header>
-  <nav>
-    <div class="logo"><img src="https://i.postimg.cc/C5YS29s5/browcookies-logo.png" alt="BrowCookie's logo"></div>
-    <ul class="nav-links">
-      <li><a href="#home">Início</a></li>
-      <li><a href="#menu">Cardápio</a></li>
-      <li><a href="#about">Sobre</a></li>
-      <li><a href="#contact">Contato</a></li>
-    </ul>
-  </nav>
+<nav>
+<div class="logo">
+<img src="https://i.postimg.cc/C5YS29s5/browcookies-logo.png">
+</div>
+<ul class="nav-links">
+<li><a href="#home">Início</a></li>
+<li><a href="#menu">Cardápio</a></li>
+<li><a href="#about">Sobre</a></li>
+<li><a href="#contact">Contato</a></li>
+</ul>
+</nav>
 </header>
 
-<!-- HERO: aqui estamos usando a LOGO como decoração de fundo -->
-<section id="home" class="hero" aria-label="Banner BrowCookie's">
-  <div class="hero-inner container">
-    <h1>BrowCookie's</h1>
-    <p>Cookies e Brownies Artesanais</p>
-    <a class="btn" href="#menu">Ver Cardápio</a>
-  </div>
+<section id="home" class="hero">
+<div>
+<h1>BrowCookie's</h1>
+<p>Cookies e Brownies Artesanais</p>
+<a class="btn" href="#menu">Ver Cardápio</a>
+</div>
 </section>
 
-<!-- CARDÁPIO -->
-<section id="menu" class="container">
-  <h2>Nosso Cardápio</h2>
-  <div class="menu-grid">
+<section id="menu">
+<h2>Nosso Cardápio</h2>
+<div class="menu-grid">
 
-    <!-- Cookie 1 (sua imagem browcookies.jpg) -->
-    <article class="menu-item" onclick="openImage(this.querySelector('img').src)" role="button" tabindex="0">
-      <img src="https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/browcookies.jpg" alt="Cookie BrowCookie's">
-      <div class="menu-item-content">
-        <h3>Cookie Artesanal</h3>
-        <p>Crocante por fora, macio por dentro e cheio de sabor!</p>
-        <div class="price">R$ 15,00</div>
-      </div>
-    </article>
+<!-- COOKIE -->
+<div class="menu-item">
+<a href="https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/WhatsApp%20Image%202025-11-13%20at%2006.51.48.jpeg" target="_blank">
+<img src="https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/WhatsApp%20Image%202025-11-13%20at%2006.51.48.jpeg" alt="Cookie Artesanal">
+</a>
+<div class="menu-item-content">
+<h3>Cookie Artesanal</h3>
+<p>Crocante por fora, macio por dentro.</p>
+<span class="price">R$ 15,00</span>
+</div>
+</div>
 
-    <!-- Cookie 2 (sua outra imagem) -->
-    <article class="menu-item" onclick="openImage(this.querySelector('img').src)" role="button" tabindex="0">
-      <img src="https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/WhatsApp%20Image%202025-11-13%20at%2006.51.48.jpeg" alt="Cookie especial BrowCookie's">
-      <div class="menu-item-content">
-        <h3>Cookie Especial</h3>
-        <p>Com gotas de chocolate, feito com ingredientes selecionados.</p>
-        <div class="price">R$ 15,00</div>
-      </div>
-    </article>
+<!-- BROWNIE -->
+<div class="menu-item">
+<a href="https://images.unsplash.com/photo-1611095973763-4141b7b348df?auto=format&fit=crop&w=800&q=80" target="_blank">
+<img src="https://images.unsplash.com/photo-1611095973763-4141b7b348df?auto=format&fit=crop&w=800&q=80" alt="Brownie Artesanal">
+</a>
+<div class="menu-item-content">
+<h3>Brownie Artesanal</h3>
+<p>Brownie úmido, intenso e delicioso.</p>
+<span class="price">R$ 12,00</span>
+</div>
+</div>
 
-    <!-- Brownie (imagem ilustrativa da internet) -->
-    <article class="menu-item" onclick="openImage(this.querySelector('img').src)" role="button" tabindex="0">
-      <img src="https://images.unsplash.com/photo-1628191010648-6e4b2c8b4cf2?auto=format&fit=crop&w=1200&q=80" alt="Brownie ilustrativo">
-      <div class="menu-item-content">
-        <h3>Brownie Artesanal</h3>
-        <p>Brownie úmido, intenso e delicioso.</p>
-        <div class="price">R$ 12,00</div>
-      </div>
-    </article>
-
-  </div>
+</div>
 </section>
 
-<!-- SOBRE -->
-<section id="about" class="container">
-  <h2>Sobre Nós</h2>
-  <div class="about" >
-    <div>
-      <p style="font-size:14px;color:#444;">
-        A <strong>BrowCookie’s</strong> nasceu com o propósito de adoçar o seu dia com receitas artesanais, feitas com ingredientes selecionados e muito carinho.
-        Feitos em <strong>Anápolis - Goiás</strong>, entregamos sabor e alegria em cada mordida.
-      </p>
-      <p style="margin-top:12px;font-size:14px;color:#444;text-align:left;">
-        Horário: 11h às 21h<br>
-        Pedidos via WhatsApp: (62) 98130-9802
-      </p>
-    </div>
-    <div class="about-img">
-      <img src="https://images.unsplash.com/photo-1613470207927-9ffabde3c4e5?auto=format&fit=crop&w=1200&q=80" alt="Equipe BrowCookie's">
-    </div>
-  </div>
+<section id="about">
+<h2>Sobre Nós</h2>
+<div class="about-img">
+<img src="https://images.unsplash.com/photo-1613470207927-9ffabde3c4e5?auto=format&fit=crop&w=1200&q=80" alt="Sobre nós">
+</div>
+<p style="margin-top:1rem;font-size:14px;text-align:center;">
+Produzimos doces artesanais com ingredientes selecionados e muito carinho.
+</p>
 </section>
 
-<!-- CONTATO -->
-<section id="contact" class="container">
-  <h2>Contato</h2>
-  <div class="contact-info">
-    <p>📍 Anápolis - Goiás</p>
-    <p>⏰ Funcionamento: 11h às 21h</p>
-    <a class="whatsapp-btn" href="https://wa.me/5562981309802?text=Olá!%20Quero%20fazer%20um%20pedido!">WhatsApp Principal</a>
-    <a class="whatsapp-btn" href="https://wa.me/5562994783973?text=Olá!%20Atendimento%20Secundário">WhatsApp Secundário</a>
-  </div>
+<section id="contact">
+<h2>Contato</h2>
+<div class="contact-info">
+<p>📍 Anápolis - Goiás</p>
+<p>⏰ Funcionamento: 11h às 21h</p>
+
+<a class="whatsapp-btn" href="https://wa.me/5562981309802?text=Olá! Quero fazer um pedido!">WhatsApp Principal</a>
+<a class="whatsapp-btn" href="https://wa.me/5562994783973?text=Olá! Atendimento Secundário">WhatsApp Secundário</a>
+</div>
 </section>
 
 <footer>
-  <p>&copy; 2024 BrowCookie's - Todos os direitos reservados.</p>
+<p>&copy; 2025 BrowCookie's - Todos os direitos reservados.</p>
 </footer>
 
-<!-- Modal de imagem (zoom ao clicar) -->
-<div id="imageModal" aria-hidden="true" onclick="closeImage()">
-  <div class="close" title="Fechar" onclick="closeImage()" style="position:absolute;top:18px;right:22px;color:#fff;font-size:28px;cursor:pointer">&times;</div>
-  <img id="modalImg" src="" alt="Ampliação de imagem">
-</div>
+<!-- Botão flutuante -->
+<a id="whatsapp-float" href="https://wa.me/5562981309802?text=Olá! Quero fazer um pedido!">💬</a>
 
-<!-- Botão flutuante WhatsApp -->
-<a class="whatsapp-fab" href="https://wa.me/5562981309802?text=Olá!%20Quero%20fazer%20um%20pedido!" target="_blank" rel="noreferrer">
-  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23fff' d='M20.5 3.5A11 11 0 1 0 10 21l-1.2.4.4-1.2A11 11 0 0 0 20.5 3.5zm-8.9 15.4c3.6 0 6.2-1.9 6.8-2.2.6-.3 1-.8 1.2-1.3.1-.3.2-.7.1-1-.1-.3-.4-.6-.8-.9-.4-.2-.9-.5-1.4-.7-.5-.2-1.1-.4-1.5-.6-.4-.2-.7-.3-1-.5-.3-.2-.4-.3-.6-.2-.1.1-.2.3-.1.6.1.3.2.8.2 1.1 0 .3-.1.4-.4.6-.3.2-1 .5-1.5.5-.4 0-.9-.1-1.6-.5-1-.5-1.9-1.4-2.6-2.7-.3-.6-.6-1-.6-1.6 0-.5.1-1 .6-1.4.6-.4 1.2-.6 1.8-.6.5 0 1.1 0 1.7.3.6.3 1.2.8 1.8 1.5.6.7 1.1 1.5 1.6 2 .6.6 1 1.4 1 2.1 0 .7-.3 1.5-.9 2.2-.6.7-1.6 1.4-3 1.8-.4.1-.9.2-1.3.2-.7 0-1.3-.1-1.8-.3-.6-.2-1.1-.4-1.5-.7l-.1-.1c-.1 0-.1.1 0 .3.2.4.6 1 1.4 1.6.9.6 2 1 3.4 1z'/></svg>" alt="WhatsApp">
-  Pedir no WhatsApp
-</a>
-
-<script>
-  /* Abre modal com a imagem clicada */
-  function openImage(src){
-    var modal = document.getElementById('imageModal');
-    var img = document.getElementById('modalImg');
-    img.src = src;
-    modal.style.display = 'flex';
-    modal.setAttribute('aria-hidden','false');
-  }
-  function closeImage(){
-    var modal = document.getElementById('imageModal');
-    modal.style.display = 'none';
-    modal.setAttribute('aria-hidden','true');
-    document.getElementById('modalImg').src = '';
-  }
-
-  // Permitir fechar com ESC
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeImage();
-  });
-
-  // Acessibilidade: abrir item com Enter/Space
-  document.querySelectorAll('.menu-item').forEach(function(item){
-    item.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        var img = item.querySelector('img');
-        if(img) openImage(img.src);
-      }
-    });
-  });
-</script>
 </body>
 </html>

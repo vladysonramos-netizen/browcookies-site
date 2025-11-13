@@ -5,72 +5,155 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BrowCookie's - Cookies e Brownies Artesanais</title>
 <style>
+/* Reset básico */
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Georgia',serif;color:#333;line-height:1.5;font-size:14px;}
 
-/* Fundo com a logo */
+/* Estilos gerais do corpo */
+body{
+    font-family:'Georgia',serif;
+    color:#333; /* Cor de texto padrão */
+    line-height:1.5;
+    font-size:14px;
+    background-color: #FFF8F0; /* NOVO: Fundo principal em um tom creme suave para combinar com a logo */
+}
+
+/* Fundo com a logo (com opacidade ajustada) */
 body::before{
-  content:"";
-  position:fixed;
-  top:0;left:0;width:100%;height:100%;
-  background:url('https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/browcookies.jpg') center/cover no-repeat;
-  opacity:0.08;
-  z-index:-1;
+  content:"";
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:url('https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/browcookies.jpg') center/cover no-repeat;
+  /* AJUSTADO: Opacidade um pouco maior para integrar melhor */
+  opacity:0.12; 
+  z-index:-1;
 }
 
 header{
-  background:white;
-  color:#333;
-  padding:.4rem 0;
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:1000;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  background:white;
+  color:#333;
+  padding:.4rem 0;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+  box-shadow:0 4px 15px rgba(0,0,0,0.15);
 }
 nav{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 1rem;}
 .logo img{height:60px;}
 .nav-links{display:flex;gap:1rem;list-style:none;font-size:14px;}
-.nav-links a{text-decoration:none;color:#B8956A;}
-.nav-links a:hover{color:#6B4423;}
+.nav-links a{
+  text-decoration:none;
+  color:#B8956A; /* Cor do cookie da logo */
+  transition: color 0.3s ease, border-bottom 0.3s ease; 
+}
+.nav-links a:hover{
+  color:#6B4423; /* Cor do texto "BROWCOOKIE'S" */
+  border-bottom: 2px solid #6B4423; 
+  padding-bottom: 2px;
+}
 
 .hero{
-  height:80vh;
-  background:url('https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/WhatsApp%20Image%202025-11-13%20at%2006.51.48.jpeg') center/cover;
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  padding:1rem;margin-top:70px;
+  height:80vh;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), /* AJUSTADO: Overlay um pouco mais escuro para maior contraste */
+    url('https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/WhatsApp%20Image%202025-11-13%20at%2006.51.48.jpeg') center/cover;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:1rem;margin-top:70px;
 }
-.hero h1{font-size:32px;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.4);}
-.hero p{font-size:16px;color:#fff;margin-top:.5rem;text-shadow:0 2px 6px rgba(0,0,0,.4);}
-.btn{display:inline-block;margin-top:1rem;padding:.6rem 1.4rem;border-radius:30px;background:#B8956A;color:white;text-decoration:none;font-size:14px;}
+.hero h1{font-size:32px;color:#fff;text-shadow:0 3px 8px rgba(0,0,0,.7);} /* AJUSTADO: Sombra mais forte */
+.hero h2{
+  font-size:16px;
+  color:#fff;
+  margin-top:.5rem;
+  text-shadow:0 3px 8px rgba(0,0,0,.7); /* AJUSTADO: Sombra mais forte */
+  margin-bottom: 1rem;
+}
+.btn{
+    display:inline-block;
+    margin-top:1rem;
+    padding:.6rem 1.4rem;
+    border-radius:30px;
+    background:#6B4423; /* NOVO: Cor do texto "BROWCOOKIE'S" */
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #B8956A; /* NOVO: Hover para a cor do cookie */
+}
+
 section{padding:3rem 1rem;max-width:1100px;margin:0 auto;}
-h2{text-align:center;font-size:22px;margin-bottom:2rem;color:#B8956A;}
+h2{
+    text-align:center;
+    font-size:22px;
+    margin-bottom:2rem;
+    color:#6B4423; /* NOVO: Cor do texto "BROWCOOKIE'S" */
+}
 .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}
-.menu-item{background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08);transition:transform 0.2s;}
+.menu-item{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    transition:transform 0.2s;
+    border: 1px solid #E0D3C2; /* NOVO: Adiciona uma borda suave */
+}
 .menu-item:hover{transform:scale(1.03);}
 .menu-item img{width:100%;height:200px;object-fit:cover;cursor:pointer;}
 .menu-item-content{padding:1rem;}
-.menu-item-content h3{color:#6B4423;font-size:18px;}
-.price{font-size:16px;color:#B8956A;font-weight:bold;}
+.menu-item-content h3{color:#6B4423;font-size:18px;} /* Mantém a cor da logo */
+.price{
+    font-size:16px;
+    color:#B8956A; /* Cor do cookie da logo */
+    font-weight:bold;
+}
 
 .about-img img{width:100%;height:280px;object-fit:cover;border-radius:12px;}
-.contact-info{background:#FFF8F0;padding:1.5rem;border-radius:12px;border:1px solid #B8956A;text-align:center;}
-.whatsapp-btn{display:block;margin-top:1rem;background:#25D366;color:white;padding:.7rem;border-radius:30px;text-decoration:none;font-size:15px;}
-footer{text-align:center;padding:1.5rem;background:#6B4423;color:white;font-size:13px;margin-top:2rem;}
+.contact-info{
+    background:#FFF8F0; /* Mantém o fundo creme */
+    padding:1.5rem;
+    border-radius:12px;
+    border:1px solid #B8956A; /* NOVO: Borda na cor do cookie */
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05); /* Sombra suave */
+}
+.whatsapp-btn{
+    display:block;
+    margin-top:1rem;
+    background:#25D366; /* Mantém o verde do WhatsApp */
+    color:white;
+    padding:.7rem;
+    border-radius:30px;
+    text-decoration:none;
+    font-size:15px;
+    transition: background-color 0.3s ease;
+}
+.whatsapp-btn:hover{background:#1ebe5d;}
+
+footer{
+    text-align:center;
+    padding:1.5rem;
+    background:#6B4423; /* Cor do texto "BROWCOOKIE'S" */
+    color:white;
+    font-size:13px;
+    margin-top:2rem;
+}
 
 /* Botão flutuante WhatsApp */
 #whatsapp-float{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  color:white;
-  padding:14px;
-  border-radius:50%;
-  box-shadow:0 4px 10px rgba(0,0,0,0.3);
-  font-size:24px;
-  text-decoration:none;
-  z-index:1000;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:14px;
+  border-radius:50%;
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
+  font-size:24px;
+  text-decoration:none;
+  z-index:1000;
+  transition: background-color 0.3s ease;
 }
 #whatsapp-float:hover{background:#1ebe5d;}
 </style>
@@ -80,8 +163,7 @@ footer{text-align:center;padding:1.5rem;background:#6B4423;color:white;font-size
 <header>
 <nav>
 <div class="logo">
-<img src="https://i.postimg.cc/C5YS29s5/browcookies-logo.png">
-</div>
+<img src="https://i.postimg.cc/C5YS29s5/browcookies-logo.png" alt="BrowCookie's Logo"> </div>
 <ul class="nav-links">
 <li><a href="#home">Início</a></li>
 <li><a href="#menu">Cardápio</a></li>
@@ -94,7 +176,7 @@ footer{text-align:center;padding:1.5rem;background:#6B4423;color:white;font-size
 <section id="home" class="hero">
 <div>
 <h1>BrowCookie's</h1>
-<p>Cookies e Brownies Artesanais</p>
+<h2>Cookies e Brownies Artesanais</h2>
 <a class="btn" href="#menu">Ver Cardápio</a>
 </div>
 </section>
@@ -103,7 +185,6 @@ footer{text-align:center;padding:1.5rem;background:#6B4423;color:white;font-size
 <h2>Nosso Cardápio</h2>
 <div class="menu-grid">
 
-<!-- COOKIE -->
 <div class="menu-item">
 <a href="https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/WhatsApp%20Image%202025-11-13%20at%2006.51.48.jpeg" target="_blank">
 <img src="https://raw.githubusercontent.com/vladysonramos-netizen/browcookies-site/main/WhatsApp%20Image%202025-11-13%20at%2006.51.48.jpeg" alt="Cookie Artesanal">
@@ -115,10 +196,9 @@ footer{text-align:center;padding:1.5rem;background:#6B4423;color:white;font-size
 </div>
 </div>
 
-<!-- BROWNIE -->
 <div class="menu-item">
 <a href="https://images.unsplash.com/photo-1611095973763-4141b7b348df?auto=format&fit=crop&w=800&q=80" target="_blank">
-<img src="https://images.unsplash.com/photo-1611095973763-4141b7b348df?auto=format&fit=crop&w=800&q=80" alt="Brownie Artesanal">
+  <img src="https://images.unsplash.com/photo-1611095973763-4141b7b348df?auto=format&fit=crop&w=800&q=80" alt="Brownie Artesanal">
 </a>
 <div class="menu-item-content">
 <h3>Brownie Artesanal</h3>
@@ -155,8 +235,7 @@ Produzimos doces artesanais com ingredientes selecionados e muito carinho.
 <p>&copy; 2025 BrowCookie's - Todos os direitos reservados.</p>
 </footer>
 
-<!-- Botão flutuante -->
-<a id="whatsapp-float" href="https://wa.me/5562981309802?text=Olá! Quero fazer um pedido!">💬</a>
+<a id="whatsapp-float" href="https://wa.me/5562981309802?text=Olá! Quero fazer um pedido!" title="Fazer pedido via WhatsApp">💬</a>
 
 </body>
 </html>
